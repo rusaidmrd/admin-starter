@@ -1,0 +1,119 @@
+.login-area {
+    background: $lightBackground;
+    .login-box {
+        display: flex;
+        min-height: 100vh;
+
+        form {
+            margin: auto;
+            width: 450px;
+            max-width: 100%;
+            background: #fff;
+            border-radius: 3px;
+
+            .login-form-head {
+                text-align: center;
+                background: $primary;
+                padding: 50px;
+                h4 {
+                    letter-spacing: 0;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    margin-bottom: 7px;
+                    color: #fff;
+                }
+                p {
+                    color: #fff;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+            }
+            .login-form-body {
+                padding: 50px;
+                .form-gp {
+                    margin-bottom: 25px;
+                    position: relative;
+                    label {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        color: #b3b2b2;
+                        -webkit-transition: all 0.3s ease 0s;
+                        transition: all 0.3s ease 0s;
+                    }
+                    &.focused {
+                        label {
+                            top: -22px;
+                            color: $primary;
+                            font-weight: 600;
+                        }
+                    }
+
+                    input,
+                    select {
+                        width: 100%;
+                        height: 30px;
+                        border: none;
+                        border-bottom: 1px solid $lightGray;
+                        margin-bottom: 8px;
+
+                        &::-webkit-input-placeholder {
+                            color: darken($lightGray, 70%);
+                        }
+                    }
+                    select {
+                        color: #b3b2b2;
+                    }
+                    &.has-error {
+                        label,
+                        input,
+                        input::placeholder,
+                        i {
+                            color: $errorColor;
+                        }
+                    }
+                    i {
+                        position: absolute;
+                        right: 5px;
+                        color: $primary;
+                        font-size: 16px;
+                    }
+                }
+
+                .submit-btn-area {
+                    text-align: center;
+                    button {
+                        width: 100%;
+                        height: 50px;
+                        border: none;
+                        background: $secondary;
+                        color: $primary;
+                        border-radius: 40px;
+                        text-transform: uppercase;
+                        letter-spacing: 0;
+                        font-weight: 600;
+                        font-size: 12px;
+                        box-shadow: 0 0 22px rgba(0, 0, 0, 0.07);
+                        transition: all 0.3s ease 0s;
+                        &:hover {
+                            background-color: darken($secondary, 3%);
+                            i {
+                                margin-left: 20px;
+                            }
+                        }
+                        i {
+                            margin-left: 15px;
+                            -webkit-transition: margin-left 0.3s ease 0s;
+                            transition: margin-left 0.3s ease 0s;
+                        }
+                    }
+                }
+                .form-footer {
+                    a {
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
