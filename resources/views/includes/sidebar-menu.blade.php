@@ -9,14 +9,14 @@
             <nav>
                 <ul class="metismenu" id="menu">
                     <li class="active">
-                        <a href="#"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                        <a href="{{ route('dashboard') }}"><i class="ti-dashboard"></i><span>dashboard</span></a>
                     </li>
 
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>User Management
                             </span></a>
                         <ul class="collapse">
-                            <li><a href="index.html">User list</a></li>
+                            <li><a href="{{ route('users') }}">User list</a></li>
                             <li><a href="index3-horizontalmenu.html">Roles</a></li>
                             <li><a href="index3-horizontalmenu.html">Permissions</a></li>
                         </ul>

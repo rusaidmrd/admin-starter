@@ -29,6 +29,10 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::middleware(['auth:admin'])->get('/dashboard', function(){
+Route::middleware(['auth'])->get('/dashboard', function(){
     return view('pages.dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth'])->get('/users', function(){
+    return view('pages.users.list');
+})->name('users');
