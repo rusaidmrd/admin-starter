@@ -6,15 +6,15 @@
     height: 100vh;
     width: 280px;
     overflow: hidden;
-    background: $primary;
+    background: $darkColor;
     box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 
     .sidebar-header {
         padding: 19px 32px 20px;
-        background: $primary;
-        border-bottom: 1px solid darken($primary, 5%);
+        background: $darkColor;
+        border-bottom: 1px solid $darkColor;
         .logo {
             text-align: center;
             a {
@@ -91,7 +91,8 @@
             .metismenu > li:hover > a,
             .metismenu > li.active > a {
                 color: #fff;
-                background: darken($primary, 3%);
+                // background: darken($primary, 3%);
+                background: $primaryDark;
             }
 
             .metismenu li:hover > a,

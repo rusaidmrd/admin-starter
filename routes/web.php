@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PermissionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,18 +22,20 @@ Route::get('/', function () {
 //     return view('pages.dashboard');
 // });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
 Route::middleware(['auth'])->get('/dashboard', function(){
-    return view('pages.dashboard');
+    return view('pages.dashboard.index');
 })->name('dashboard');
 
 Route::middleware(['auth'])->get('/users', function(){
     return view('pages.users.list');
 })->name('users');
+
+
+Route::middleware('auth')->group(function(){
+    Route::get('/permissions',[PermissionsController::class,'index'])->name('permissions.index');
+    Route::get('/permissions/all',[PermissionsController::class,'getAllData'])->name('permissions.all');
+});

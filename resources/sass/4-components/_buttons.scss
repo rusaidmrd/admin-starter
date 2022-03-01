@@ -1,0 +1,121 @@
+.btn {
+    padding: 8px 17px;
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-xl {
+    padding: 19px 24px;
+}
+
+.btn-lg {
+    padding: 15px 22px;
+}
+
+.btn-md {
+    padding: 12px 19px;
+}
+
+.btn-sm {
+    padding: 9px 14px;
+}
+
+.btn-xs {
+    padding: 5px 10px;
+}
+
+.btn-flat {
+    border-radius: 0;
+}
+
+.btn-rounded {
+    border-radius: 50px;
+}
+
+.btn-info {
+}
+
+.btn-primary {
+    background: $primary;
+    border-color: $primary;
+}
+
+.btn-primary:hover {
+    background: $primaryDark;
+    border-color: $primaryDark;
+}
+
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
+    background: $primaryDark;
+    border-color: $primaryDark;
+}
+
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+    background: $primaryDark;
+    border-color: $primaryDark;
+}
+
+.btn-secondary {
+    background: $secondary;
+    border-color: $secondary;
+}
+
+.btn-secondary:hover {
+    background: $secondaryDark;
+    border-color: $secondaryDark;
+}
+
+.btn-check:focus + .btn-secondary,
+.btn-secondary:focus {
+    background: $secondaryDark;
+    border-color: $secondaryDark;
+}
+
+.btn-secondary.disabled,
+.btn-secondary:disabled {
+    background-color: lighten($secondary, 2%);
+    border-color: lighten($secondary, 2%);
+}
+
+.btn-dark {
+    background: $darkColor;
+    border-color: $darkColor;
+    color: white;
+}
+
+.btn-dark:hover {
+    background: $darkColor;
+    border-color: $darkColor;
+    color: white;
+}
+
+.btn-default {
+    background-color: transparent;
+    border-color: $textColorNormal;
+    color: $textColorNormal;
+}
+
+.btn-default:hover {
+    border-color: $primary;
+}
+
+.btn-success {
+    background-color: $successColor;
+    border-color: $successColor;
+}
+
+.add-new-btn {
+    position: absolute;
+    right: 1.5rem;
+    top: 2.6rem;
+    z-index: 5;
+}

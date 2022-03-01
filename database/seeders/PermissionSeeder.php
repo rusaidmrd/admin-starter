@@ -14,14 +14,16 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        $manageUser = new Permission();
-        $manageUser->name = 'Manage users';
-        $manageUser->slug = 'manage-users';
-        $manageUser->save();
+        // $manageUser = new Permission();
+        // $manageUser->name = 'Manage users';
+        // $manageUser->slug = 'manage-users';
+        // $manageUser->save();
 
-        $createProduct = new Permission();
-        $createProduct->name = 'Create Products';
-        $createProduct->slug = 'create-products';
-        $createProduct->save();
+        // $createProduct = new Permission();
+        // $createProduct->name = 'Create Products';
+        // $createProduct->slug = 'create-products';
+        // $createProduct->save();
+
+        Permission::factory()->count(30)->create();
     }
 }

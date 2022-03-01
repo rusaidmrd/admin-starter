@@ -18,7 +18,7 @@
                         <ul class="collapse">
                             <li><a href="{{ route('users') }}">User list</a></li>
                             <li><a href="index3-horizontalmenu.html">Roles</a></li>
-                            <li><a href="index3-horizontalmenu.html">Permissions</a></li>
+                            <li><a href="{{ route('permissions.index') }}">Permissions</a></li>
                         </ul>
                     </li>
                     <li>
