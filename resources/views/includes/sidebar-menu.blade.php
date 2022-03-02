@@ -8,17 +8,17 @@
         <div class="menu-inner">
             <nav>
                 <ul class="metismenu" id="menu">
-                    <li class="active">
-                        <a href="{{ route('dashboard') }}"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                    <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard') }}"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                     </li>
 
-                    <li>
+                    <li class="{{ request()->routeIs('permissions.index') || request()->routeIs('permissions.*') ? 'active' : '' }}">
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>User Management
                             </span></a>
                         <ul class="collapse">
                             <li><a href="{{ route('users') }}">User list</a></li>
                             <li><a href="index3-horizontalmenu.html">Roles</a></li>
-                            <li><a href="{{ route('permissions.index') }}">Permissions</a></li>
+                            <li class="{{ request()->routeIs('permissions.index') || request()->routeIs('permissions.*') ? 'active' : '' }}"><a href="{{ route('permissions.index') }}">Permissions</a></li>
                         </ul>
                     </li>
                     <li>

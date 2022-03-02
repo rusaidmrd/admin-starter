@@ -34,7 +34,13 @@ table.dataTable tbody > tr > .selected {
 }
 
 .filter-wrapper {
-    margin-top: 32px;
+    margin-top: 0px;
+}
+
+div.dt-buttons {
+    float: none;
+    display: flex;
+    justify-content: center;
 }
 
 .datatable-primary thead {

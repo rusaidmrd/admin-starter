@@ -25,7 +25,6 @@ class PermissionFactory extends Factory
         $name = $this->faker->word();
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
             'created_at' => now(),
             'updated_at' => now()
         ];

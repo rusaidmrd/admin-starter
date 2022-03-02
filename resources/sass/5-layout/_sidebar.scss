@@ -108,6 +108,10 @@
             .metismenu li li a:after {
                 top: 6px;
             }
+
+            .metismenu li ul li.active {
+                color: white;
+            }
         }
     }
 }

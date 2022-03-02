@@ -64,6 +64,10 @@
     border-color: $primaryDark;
 }
 
+.btn-primary:visited {
+    color: white;
+}
+
 .btn-secondary {
     background: $secondary;
     border-color: $secondary;
@@ -72,6 +76,10 @@
 .btn-secondary:hover {
     background: $secondaryDark;
     border-color: $secondaryDark;
+}
+
+.btn-secondary:visited {
+    color: white;
 }
 
 .btn-check:focus + .btn-secondary,
@@ -98,9 +106,17 @@
     color: white;
 }
 
+.btn-dark:visited {
+    color: white;
+}
+
 .btn-default {
     background-color: transparent;
     border-color: $textColorNormal;
+    color: $textColorNormal;
+}
+
+.btn-default:visited {
     color: $textColorNormal;
 }
 
@@ -111,11 +127,36 @@
 .btn-success {
     background-color: $successColor;
     border-color: $successColor;
+    color: white;
+}
+
+.btn-success:visited {
+    color: white;
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    border-color: $primary;
+    color: $primary;
+}
+
+.btn-primary-outline:visited {
+    color: $primary;
+}
+
+.btn-secondary-outline {
+    background-color: transparent;
+    border-color: $secondaryDark;
+    color: $secondaryDark;
+}
+
+.btn-secondary-outline:hover {
+    color: $secondary;
+}
+
+.btn-secondary-outline:visited {
+    color: $secondaryDark;
 }
 
 .add-new-btn {
-    position: absolute;
-    right: 1.5rem;
-    top: 2.6rem;
-    z-index: 5;
 }

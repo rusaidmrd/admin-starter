@@ -1,5 +1,6 @@
 .main-content {
     background: $lightGray;
+    min-height: 100vh;
 }
 
 .page-container {
@@ -16,6 +17,10 @@
 
 .sbar_collapsed.page-container {
     padding-left: 0;
+}
+
+.required-text {
+    color: $errorColor;
 }
 
 .pt--0 {

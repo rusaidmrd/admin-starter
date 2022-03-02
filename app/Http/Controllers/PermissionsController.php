@@ -18,13 +18,24 @@ class PermissionsController extends Controller
 
     public function create()
     {
-        //
+        return view('pages.permissions.create');
     }
 
 
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $permissionDB = Permission::where('name',$request->name)->get();
+
+        if($permissionDB->count() > 0) {
+            return back()->with('error','This name is already taken, Please try again');
+        }
+
+        Permission::create($validatedData);
+        return redirect()->route('permissions.index')->with('success','Permission added successfully');
     }
 
 
@@ -34,15 +45,25 @@ class PermissionsController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        //
+        return view('pages.permissions.edit', compact('permission'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $permissionDB = Permission::where('name',$request->name)->get();
+        if($permissionDB->count() > 0) {
+            return back()->with('error','This name is already taken, Please try again');
+        }
+
+        $permission->update($validatedData);
+        return redirect()->route('permissions.index')->with('success','Permission details updated successfully');
     }
 
 

@@ -58,7 +58,7 @@ p img {
 
 a,
 a:visited {
-    color: $primary;
+    color: white;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -73,6 +73,10 @@ a:visited {
         text-decoration: none;
         outline: 0;
     }
+}
+
+a:visited {
+    color: $secondary;
 }
 
 p a,
