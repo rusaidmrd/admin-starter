@@ -41,4 +41,5 @@ Route::middleware('auth')->group(function(){
     Route::post('/permissions',[PermissionsController::class,'store'])->name('permissions.store');
     Route::get('/permissions/edit/{permission}',[PermissionsController::class,'edit'])->name('permissions.edit');
     Route::put('/permissions/update/{permission}',[PermissionsController::class,'update'])->name('permissions.update');
+    Route::get('/permissions/show/{permission}',[PermissionsController::class,'show'])->name('permissions.show');
 });

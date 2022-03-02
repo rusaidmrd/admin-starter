@@ -39,9 +39,9 @@ class PermissionsController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Permission $permission)
     {
-        //
+        return view('pages.permissions.show',compact('permission'));
     }
 
 

@@ -32834,6 +32834,16 @@ table.dataTable > thead > tr > td:not(.sorting_disabled) {
   color: #e74c3c;
 }
 
+.single-table .table th,
+.single-table .table td {
+  text-align: left;
+  padding: 12px 0px;
+}
+
+.single-table .table > :not(:last-child) > :last-child > * {
+  border-bottom-color: inherit;
+}
+
 .header-area {
   padding: 15px 30px;
   background: #fff;

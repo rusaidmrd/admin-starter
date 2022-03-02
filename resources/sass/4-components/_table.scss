@@ -1,0 +1,12 @@
+.single-table {
+    .table {
+        th,
+        td {
+            text-align: left;
+            padding: 12px 0px;
+        }
+    }
+    .table > :not(:last-child) > :last-child > * {
+        border-bottom-color: inherit;
+    }
+}
