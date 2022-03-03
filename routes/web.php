@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PermissionsController;
+use Database\Factories\PermissionFactory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,10 +37,17 @@ Route::middleware(['auth'])->get('/users', function(){
 
 
 Route::middleware('auth')->group(function(){
-    Route::get('/permissions',[PermissionsController::class,'index'])->name('permissions.index');
-    Route::get('/permissions/create',[PermissionsController::class,'create'])->name('permissions.create');
-    Route::post('/permissions',[PermissionsController::class,'store'])->name('permissions.store');
-    Route::get('/permissions/edit/{permission}',[PermissionsController::class,'edit'])->name('permissions.edit');
-    Route::put('/permissions/update/{permission}',[PermissionsController::class,'update'])->name('permissions.update');
-    Route::get('/permissions/show/{permission}',[PermissionsController::class,'show'])->name('permissions.show');
+
+    Route::prefix('/permissions')->group(function(){
+        Route::get('',[PermissionsController::class,'index'])->name('permissions.index');
+        Route::get('/create',[PermissionsController::class,'create'])->name('permissions.create');
+        Route::post('',[PermissionsController::class,'store'])->name('permissions.store');
+        Route::get('/edit/{permission}',[PermissionsController::class,'edit'])->name('permissions.edit');
+        Route::put('/update/{permission}',[PermissionsController::class,'update'])->name('permissions.update');
+        Route::get('/show/{permission}',[PermissionsController::class,'show'])->name('permissions.show');
+        Route::delete('/delete/{permission}',[PermissionsController::class,'destroy'])->name('permissions.delete');
+        Route::delete('/delete',[PermissionsController::class,'destroyAll'])->name('permissions.destroyAll');
+    });
+
+
 });

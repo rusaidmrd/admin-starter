@@ -31,14 +31,18 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($permissions as $permission )
-                                        <tr>
+                                        <tr data-entry-id="{{ $permission->id }}">
                                             <td></td>
                                             <td>{{ $permission->id }}</td>
                                             <td>{{ $permission->name }}</td>
                                             <td>
                                                 <a href="{{ route('permissions.show',$permission->id) }}" class="btn btn-primary-outline btn-xs">View</a>
                                                 <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-secondary-outline btn-xs">Edit</a>
-                                                <button class="btn btn-danger btn-xs"><i class="ti-trash"></i></button>
+                                                <form action="{{ route('permissions.delete',$permission->id) }}" class="d-initial" method="POST" onsubmit="return deletePermissionForm(this);">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <button type="submit" class="btn btn-danger btn-xs"><i class="ti-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -57,34 +61,53 @@
             $(function(){
                 let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons);
 
+                let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+                let deleteButton = {
+                    text: deleteButtonTrans,
+                    url: "{{ route('permissions.destroyAll') }}",
+                    className: 'btn-danger',
+                    action: function (e, dt, node, config) {
+                        var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+                            return $(entry).data('entry-id')
+                        });
 
-                // let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-                // let deleteButton = {
-                //     text: deleteButtonTrans,
-                //     url: "",
-                //     className: 'btn-danger',
-                //     action: function (e, dt, node, config) {
-                //     var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-                //         return $(entry).data('entry-id')
-                //     });
+                        if (ids.length === 0) {
+                            console.log("url ==> ",config.url);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '{{ trans('global.datatables.zero_selected') }}',
+                            })
 
-                //     if (ids.length === 0) {
-                //         alert('{{ trans('global.datatables.zero_selected') }}')
+                            return
+                        }
 
-                //         return
-                //     }
-
-                //     if (confirm('{{ trans('global.areYouSure') }}')) {
-                //         $.ajax({
-                //         headers: {'x-csrf-token': _token},
-                //         method: 'POST',
-                //         url: config.url,
-                //         data: { ids: ids, _method: 'DELETE' }})
-                //         .done(function () { location.reload() })
-                //     }
-                //     }
-                // }
-                // dtButtons.push(deleteButton);
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#6a040f',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    method: 'POST',
+                                    url: config.url,
+                                    data: { ids: ids, _method: 'DELETE' }
+                                })
+                                .done(function () {
+                                    location.reload()
+                                });
+                            }
+                        });
+                    }
+                }
+                dtButtons.push(deleteButton);
 
                 $.extend(true, $.fn.dataTable.defaults, {
                     order: [[ 1, 'desc' ]],
@@ -99,6 +122,23 @@
 
             });
 
+
+            function deletePermissionForm(form) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#6a040f',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+                return false;
+            }
 
         </script>
     @endsection

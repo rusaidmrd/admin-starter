@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Response;
 
 class PermissionsController extends Controller
 {
@@ -67,9 +68,21 @@ class PermissionsController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return back()->with('success','Permission has been deleted successfully');
+    }
+
+    public function destroyAll(Request $request) {
+        $request->validate([
+            'ids'   => 'required|array',
+            'ids.*' => 'exists:permissions,id',
+        ]);
+
+        Permission::whereIn('id',request('ids'))->delete();
+        Session::flash('success','Successfully deleted selected permissions');
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 
 

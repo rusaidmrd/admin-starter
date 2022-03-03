@@ -23,3 +23,7 @@ $("form.admin-user-form :input").each(function () {
         input.closest(".form-gp").addClass("focused");
     }
 });
+
+// Initiating the sweetalert2 plugin
+const Swal = require("sweetalert2");
+window.Swal = Swal;
