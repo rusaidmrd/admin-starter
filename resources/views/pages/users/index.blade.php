@@ -20,7 +20,7 @@
                         @endif
 
                         <div class="data-tables datatable-primary">
-                            <table id="dataTable2" class="text-center datatable datatable-Permission datatable-normal">
+                            <table id="dataTable2" class="text-center datatable datatable-User datatable-normal">
                                 <thead class="text-capitalize">
                                     <tr>
                                         <th></th>
@@ -74,7 +74,7 @@
                 let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
                 let deleteButton = {
                     text: deleteButtonTrans,
-                    url: "{{ route('users.destroyMany') }}",
+                    url: "{{ route('users.deleteMany') }}",
                     className: 'btn-danger',
                     action: function (e, dt, node, config) {
                         var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -123,7 +123,7 @@
                     pageLength: 10,
                 });
 
-                $('.datatable-Permission:not(.ajaxTable)').DataTable({ buttons: dtButtons });
+                $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons });
                 // $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
                 //     $($.fn.dataTable.tables(true)).DataTable()
                 //         .columns.adjust();

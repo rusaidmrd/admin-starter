@@ -36,7 +36,7 @@ class PermissionsController extends Controller
         }
 
         Permission::create($validatedData);
-        return redirect()->route('permissions.index')->with('success','Permission added successfully');
+        return redirect()->route('permissions.index')->with('success','The new permission added successfully');
     }
 
 

@@ -1,14 +1,14 @@
 <x-layout>
 
     @section('page-title')
-        <h4 class="page-title pull-left">Permission List</h4>
+        <h4 class="page-title pull-left">List of Roles</h4>
     @endsection
 
     <div class="main-content-inner">
         <div class="row">
             <div class="col-12 mt-5">
                 <div class="add-new-btn mb-2">
-                    <a href="{{ route('permissions.create') }}" class="btn btn-success"><i class="ti-plus mr-1"></i>Add Permission</a>
+                    <a href="{{ route('roles.create') }}" class="btn btn-success"><i class="ti-plus mr-1"></i>Add new role</a>
                 </div>
                  <div class="card">
                     <div class="card-body">
@@ -20,25 +20,31 @@
                         @endif
 
                         <div class="data-tables datatable-primary">
-                            <table id="dataTable2" class="text-center datatable datatable-Permission datatable-normal">
+                            <table id="" class="text-center datatable datatable-Roles datatable-normal datatable-with-border">
                                 <thead class="text-capitalize">
                                     <tr>
                                         <th></th>
                                         <th>ID</th>
-                                        <th>Title</th>
+                                        <th>Name</th>
+                                        <th>Permissions</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($permissions as $permission )
-                                        <tr data-entry-id="{{ $permission->id }}">
+                                    @foreach ($roles as $role )
+                                        <tr data-entry-id="{{ $role->id }}">
                                             <td></td>
-                                            <td>{{ $permission->id }}</td>
-                                            <td>{{ $permission->name }}</td>
+                                            <td>{{ $role->id }}</td>
+                                            <td>{{ $role->name }}</td>
+                                            <td class="text-left p-3" style="width:500px">
+                                                @foreach ($role->permissions as $key => $permission)
+                                                    <span class="status-primary status-xs bg-info mb-1">{{ $permission->name }}</span>
+                                                @endforeach
+                                            </td>
                                             <td>
-                                                <a href="{{ route('permissions.show',$permission->id) }}" class="btn btn-primary-outline btn-xs">View</a>
-                                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-secondary-outline btn-xs">Edit</a>
-                                                <form action="{{ route('permissions.delete',$permission->id) }}" class="d-initial" method="POST" onsubmit="return deleteForm(this);">
+                                                <a href="{{ route('roles.show',$role->id) }}" class="btn btn-primary-outline btn-xs">View</a>
+                                                <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-secondary-outline btn-xs">Edit</a>
+                                                <form action="{{ route('roles.delete', $role->id) }}" class="d-initial" method="POST" onsubmit="return deleteForm(this);">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <button type="submit" class="btn btn-danger btn-xs"><i class="ti-trash"></i></button>
@@ -64,7 +70,7 @@
                 let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
                 let deleteButton = {
                     text: deleteButtonTrans,
-                    url: "{{ route('permissions.deleteMany') }}",
+                    url: "{{ route('roles.deleteMany') }}",
                     className: 'btn-danger',
                     action: function (e, dt, node, config) {
                         var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -113,7 +119,7 @@
                     pageLength: 10,
                 });
 
-                $('.datatable-Permission:not(.ajaxTable)').DataTable({ buttons: dtButtons });
+                $('.datatable-Roles:not(.ajaxTable)').DataTable({ buttons: dtButtons });
                 // $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
                 //     $($.fn.dataTable.tables(true)).DataTable()
                 //         .columns.adjust();

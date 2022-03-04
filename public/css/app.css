@@ -32103,6 +32103,16 @@ blockquote p {
   font-size: 12px;
 }
 
+.status-xs {
+  font-size: 10px;
+  border-radius: 5px;
+  padding: 2px 16px 3px;
+}
+
+.td-permission-width {
+  width: 200px;
+}
+
 .pt--0 {
   padding-top: 0;
 }
@@ -32554,6 +32564,10 @@ blockquote p {
   background-color: #6a040f !important;
 }
 
+.bg-info {
+  background-color: #035d9a !important;
+}
+
 .card {
   border: none;
   border-radius: 4px;
@@ -32827,6 +32841,29 @@ table.dataTable > thead > tr > td:not(.sorting_disabled) {
 
 .dt-buttons .btn {
   margin-right: 2px;
+}
+
+.datatable-with-border thead th {
+  border-right: 1px solid #f7f7f7;
+  border-color: #dedede;
+}
+
+.datatable-with-border thead th:first-child {
+  border-left: 1px solid #dedede;
+}
+
+.datatable-with-border tbody td {
+  border-right: 1px solid #f7f7f7;
+  border-color: #dedede;
+}
+
+.datatable-with-border tbody td:first-child {
+  border-left: 1px solid #dedede;
+}
+
+.datatable-with-border {
+  border-bottom: 1px solid #dedede;
+  border-top: 1px solid #dedede;
 }
 
 .form-title h3 {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Database\Factories\PermissionFactory;
 use Illuminate\Support\Facades\Route;
@@ -45,7 +46,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/edit/{permission}',[PermissionsController::class,'edit'])->name('permissions.edit');
         Route::put('/update/{permission}',[PermissionsController::class,'update'])->name('permissions.update');
         Route::delete('/delete/{permission}',[PermissionsController::class,'destroy'])->name('permissions.delete');
-        Route::delete('/delete',[PermissionsController::class,'destroyMany'])->name('permissions.destroyMany');
+        Route::delete('/delete',[PermissionsController::class,'destroyMany'])->name('permissions.deleteMany');
     });
 
     Route::prefix('/users')->group(function(){
@@ -56,7 +57,18 @@ Route::middleware('auth')->group(function(){
         Route::get('/edit/{user}',[UserController::class,'edit'])->name('users.edit');
         Route::put('/update/{user}',[UserController::class,'update'])->name('users.update');
         Route::delete('/delete/{user}',[UserController::class,'destroy'])->name('users.delete');
-        Route::delete('/delete',[UserController::class,'destroyMany'])->name('users.destroyMany');
+        Route::delete('/delete',[UserController::class,'destroyMany'])->name('users.deleteMany');
+    });
+
+    Route::prefix('/roles')->group(function(){
+        Route::get('',[RoleController::class,'index'])->name('roles.index');
+        Route::get('/create',[RoleController::class,'create'])->name('roles.create');
+        Route::get('/show/{role}',[RoleController::class,'show'])->name('roles.show');
+        Route::post('',[RoleController::class,'store'])->name('roles.store');
+        Route::get('/edit/{role}',[RoleController::class,'edit'])->name('roles.edit');
+        Route::put('/update/{role}',[RoleController::class,'update'])->name('roles.update');
+        Route::delete('/delete/{role}',[RoleController::class,'destroy'])->name('roles.delete');
+        Route::delete('/delete',[RoleController::class,'destroyMany'])->name('roles.deleteMany');
     });
 
 
