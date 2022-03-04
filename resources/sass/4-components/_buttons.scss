@@ -28,6 +28,11 @@
     padding: 5px 10px;
 }
 
+.btn-xxs {
+    padding: 4px 10px;
+    font-size: 11px;
+}
+
 .btn-flat {
     border-radius: 0;
 }
@@ -37,6 +42,15 @@
 }
 
 .btn-info {
+    background: $infoColor;
+    border-color: $infoColor;
+    color: white;
+}
+
+.btn-info:hover {
+    background: $infoColorDark;
+    border-color: $infoColorDark;
+    color: white;
 }
 
 .btn-primary {

@@ -12,7 +12,7 @@
         <div class="col-sm-6 d-flex justify-content-end">
             <div class="user-profile">
                 <img class="avatar user-thumb" src="{{ asset('images/user-avatar.png') }}" alt="avatar">
-                <h4 class="user-name dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">Admin <i class="fas fa-angle-down"></i></h4>
+                <h4 class="user-name dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }} <i class="fas fa-angle-down"></i></h4>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">Message</a>
                     <a class="dropdown-item" href="#">Settings</a>

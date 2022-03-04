@@ -27,3 +27,21 @@ $("form.admin-user-form :input").each(function () {
 // Initiating the sweetalert2 plugin
 const Swal = require("sweetalert2");
 window.Swal = Swal;
+
+// Select2 plugin implementation
+$(".select-all").click(function () {
+    let $select2 = $(this).parent().siblings(".select2");
+    $select2.find("option").prop("selected", "selected");
+    $select2.trigger("change");
+});
+$(".deselect-all").click(function () {
+    let $select2 = $(this).parent().siblings(".select2");
+    $select2.find("option").prop("selected", "");
+    $select2.trigger("change");
+});
+
+// Initiating the Select2 jquery plugin
+$(".select2").select2({
+    placeholder: "Select",
+    allowClear: true,
+});

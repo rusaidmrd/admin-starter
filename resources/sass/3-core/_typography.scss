@@ -27,6 +27,16 @@
     display: initial !important;
 }
 
+.status-primary {
+    color: #fff;
+    padding: 3px 20px 4px;
+    border-radius: 20px;
+    display: inline-block;
+    text-transform: capitalize;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
 .pt--0 {
     padding-top: 0;
 }

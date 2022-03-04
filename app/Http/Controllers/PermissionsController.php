@@ -74,7 +74,7 @@ class PermissionsController extends Controller
         return back()->with('success','Permission has been deleted successfully');
     }
 
-    public function destroyAll(Request $request) {
+    public function destroyMany(Request $request) {
         $request->validate([
             'ids'   => 'required|array',
             'ids.*' => 'exists:permissions,id',

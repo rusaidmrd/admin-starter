@@ -13,12 +13,7 @@ class Permission extends Model
 
     protected $guarded = [];
 
-    public function getUpdatedAtAttribute($value) {
+    public function getCreatedAtAttribute($value) {
         return Carbon::parse($value)->toFormattedDateString();
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class,'roles_permissions');
     }
 }

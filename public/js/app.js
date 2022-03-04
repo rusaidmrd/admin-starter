@@ -1870,7 +1870,23 @@ $("form.admin-user-form :input").each(function () {
 
 var Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 
-window.Swal = Swal;
+window.Swal = Swal; // Select2 plugin implementation
+
+$(".select-all").click(function () {
+  var $select2 = $(this).parent().siblings(".select2");
+  $select2.find("option").prop("selected", "selected");
+  $select2.trigger("change");
+});
+$(".deselect-all").click(function () {
+  var $select2 = $(this).parent().siblings(".select2");
+  $select2.find("option").prop("selected", "");
+  $select2.trigger("change");
+}); // Initiating the Select2 jquery plugin
+
+$(".select2").select2({
+  placeholder: "Select",
+  allowClear: true
+});
 
 /***/ }),
 

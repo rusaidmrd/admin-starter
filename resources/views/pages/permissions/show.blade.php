@@ -25,7 +25,7 @@
                                         </tr>
                                         <tr>
                                             <th class="fw-bold">Date Created</th>
-                                            <td>{{ $permission->updated_at }}</td>
+                                            <td>{{ $permission->created_at }}</td>
                                         </tr>
 
                                     </tbody>

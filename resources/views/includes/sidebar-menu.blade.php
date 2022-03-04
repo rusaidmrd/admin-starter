@@ -12,11 +12,15 @@
                         <a href="{{ route('dashboard') }}"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                     </li>
 
-                    <li class="{{ request()->routeIs('permissions.index') || request()->routeIs('permissions.*') ? 'active' : '' }}">
+                    <li class="{{
+                            request()->routeIs('users.index') ||
+                            request()->routeIs('users.*') ||
+                            request()->routeIs('permissions.index') ||
+                            request()->routeIs('permissions.*') ? 'active' : '' }}">
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>User Management
                             </span></a>
                         <ul class="collapse">
-                            <li><a href="{{ route('users') }}">User list</a></li>
+                            <li class="{{ request()->routeIs('users.index') || request()->routeIs('users.*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">User list</a></li>
                             <li><a href="index3-horizontalmenu.html">Roles</a></li>
                             <li class="{{ request()->routeIs('permissions.index') || request()->routeIs('permissions.*') ? 'active' : '' }}"><a href="{{ route('permissions.index') }}">Permissions</a></li>
                         </ul>

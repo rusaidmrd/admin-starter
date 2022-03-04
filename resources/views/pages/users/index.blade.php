@@ -1,14 +1,14 @@
 <x-layout>
 
     @section('page-title')
-        <h4 class="page-title pull-left">Permission List</h4>
+        <h4 class="page-title pull-left">Users Information</h4>
     @endsection
 
     <div class="main-content-inner">
         <div class="row">
             <div class="col-12 mt-5">
                 <div class="add-new-btn mb-2">
-                    <a href="{{ route('permissions.create') }}" class="btn btn-success"><i class="ti-plus mr-1"></i>Add Permission</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-success"><i class="ti-plus mr-1"></i>Add new user</a>
                 </div>
                  <div class="card">
                     <div class="card-body">
@@ -25,20 +25,30 @@
                                     <tr>
                                         <th></th>
                                         <th>ID</th>
-                                        <th>Title</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Email verified at</th>
+                                        <th>Roles</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($permissions as $permission )
-                                        <tr data-entry-id="{{ $permission->id }}">
+                                    @foreach ($users as $user )
+                                        <tr data-entry-id="{{ $user->id }}">
                                             <td></td>
-                                            <td>{{ $permission->id }}</td>
-                                            <td>{{ $permission->name }}</td>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->email_verified_at }}</td>
                                             <td>
-                                                <a href="{{ route('permissions.show',$permission->id) }}" class="btn btn-primary-outline btn-xs">View</a>
-                                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-secondary-outline btn-xs">Edit</a>
-                                                <form action="{{ route('permissions.delete',$permission->id) }}" class="d-initial" method="POST" onsubmit="return deleteForm(this);">
+                                                @foreach ($user->roles as $key => $role)
+                                                    <span class="status-primary bg-primary">{{ $role->name }}</span>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('users.show',$user->id) }}" class="btn btn-primary-outline btn-xs">View</a>
+                                                <a href="{{ route('users.edit',$user->id) }}" class="btn btn-secondary-outline btn-xs">Edit</a>
+                                                <form action="{{ route('users.delete', $user->id) }}" class="d-initial" method="POST" onsubmit="return deleteForm(this);">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <button type="submit" class="btn btn-danger btn-xs"><i class="ti-trash"></i></button>
@@ -64,7 +74,7 @@
                 let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
                 let deleteButton = {
                     text: deleteButtonTrans,
-                    url: "{{ route('permissions.destroyMany') }}",
+                    url: "{{ route('users.destroyMany') }}",
                     className: 'btn-danger',
                     action: function (e, dt, node, config) {
                         var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {

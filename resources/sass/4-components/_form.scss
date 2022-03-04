@@ -21,7 +21,6 @@
     .form-control {
         font-size: 14px;
         border: 1px solid rgba(170, 170, 170, 0.3);
-        padding: 10.72px 12.8px;
         padding: 0.67rem 0.8rem;
     }
 
@@ -31,4 +30,39 @@
             color: $errorColor;
         }
     }
+}
+
+// select2 plugin custom css
+.select2 {
+    max-width: 100%;
+    width: 100% !important;
+}
+
+.select2-selection__rendered {
+    padding-bottom: 5px !important;
+}
+
+.select2-results__option {
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.select2-container--default .select2-selection--multiple {
+    font-size: 14px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    padding: 0.67rem 0.8rem;
+}
+
+.select2-container--default
+    .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: $infoColor;
+}
+
+.select2-container--default .select2-results__option--selected {
+    background-color: darken($lightGray, 5%);
+}
+
+.select2-container--default.select2-container--focus
+    .select2-selection--multiple {
+    border: 1px solid rgba(170, 170, 170, 0.3);
 }
